@@ -1,6 +1,5 @@
 package com.example.translate
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,7 +23,6 @@ class WordsFragment : Fragment() {
         wordsArray = this.arguments?.getStringArrayList("words")!!
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-
 
     }
 

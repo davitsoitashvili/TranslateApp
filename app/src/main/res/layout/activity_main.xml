@@ -18,6 +18,8 @@
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:textSize="30sp"
         android:id="@+id/mainActivityInputWord"
         android:textAlignment="center"

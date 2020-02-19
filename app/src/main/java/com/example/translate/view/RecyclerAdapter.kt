@@ -7,12 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.word_model.view.*
 
-class RecyclerAdapter(val wordsArray : ArrayList<String>) : RecyclerView.Adapter<RecyclerAdapter.WordsHolder>() {
+class RecyclerAdapter(val wordsArray: ArrayList<String>) :
+    RecyclerView.Adapter<RecyclerAdapter.WordsHolder>() {
 
 
     @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsHolder {
-        return WordsHolder(LayoutInflater.from(parent.context).inflate(R.layout.word_model, null))
+        return WordsHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.word_model,
+                null
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -21,10 +27,11 @@ class RecyclerAdapter(val wordsArray : ArrayList<String>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: WordsHolder, position: Int) {
         holder.wordView.text = wordsArray.get(position)
+
     }
 
     class WordsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordView = itemView.wordModelItem
     }
-
 }
+

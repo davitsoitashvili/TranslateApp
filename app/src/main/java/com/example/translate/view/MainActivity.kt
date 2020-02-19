@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), ViewInterface {
         translateBtnClicked()
         clearInputText()
 
+
     }
 
     private fun translateBtnClicked() {
@@ -37,8 +38,9 @@ class MainActivity : AppCompatActivity(), ViewInterface {
                 mainActivityInputWord.setError("Type word!...")
             } else {
                 presenter.getWordFromView(mainActivityInputWord.text.toString())
-                val imm : InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(this.currentFocus!!.windowToken, 0)
+                val hideKeyBoard: InputMethodManager =
+                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                hideKeyBoard.hideSoftInputFromWindow(this.currentFocus!!.windowToken, 0)
             }
         }
     }
@@ -56,14 +58,18 @@ class MainActivity : AppCompatActivity(), ViewInterface {
 
 
     override fun drawResult(result: ArrayList<String>) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.WordsFragmentContainer, WordsFragment.fragmentInstance(result))
-        transaction.addToBackStack("Previous page")
-        transaction.commit()
-        mainActivityTranslateBtn.visibility = View.INVISIBLE
-        mainActivityImageBtn.visibility = View.INVISIBLE
+        if (result.size == 0) {
+            Toast.makeText(this, "The word ''${mainActivityInputWord.text}'' was not Found!", Toast.LENGTH_LONG).show()
+            mainActivityInputWord.text.clear()
+        } else {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.WordsFragmentContainer, WordsFragment.fragmentInstance(result))
+            transaction.addToBackStack("Previous page")
+            transaction.commit()
+            mainActivityTranslateBtn.visibility = View.INVISIBLE
+            mainActivityImageBtn.visibility = View.INVISIBLE
 
-
+        }
     }
 
     override fun onBackPressed() {

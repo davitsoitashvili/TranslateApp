@@ -8,19 +8,22 @@ import retrofit2.Response
 @Suppress("NAME_SHADOWING")
 class ResponseHandlerModel {
 
-    fun getWordFromPresenter(word : String, wordArrayCallback : (ArrayList<String>) -> Unit) {
+    fun getWordFromPresenter(word: String, wordArrayCallback: (ArrayList<String>) -> Unit) {
         val wordArray = ArrayList<String>()
         val call = apiHolder.getTranslatedWord(word)
         call.enqueue(object : retrofit2.Callback<Row> {
             override fun onFailure(call: Call<Row>, t: Throwable) {
                 t.printStackTrace()
             }
+
             override fun onResponse(call: Call<Row>, response: Response<Row>) {
-                val listValue = response.body()!!.row
-                for (word in listValue) {
-                   wordArray.add(word.value.word)
+                if (response.body() != null) {
+                    val listValue = response.body()!!.row
+                    for (word in listValue) {
+                        wordArray.add(word.value.word)
+                    }
+                    wordArrayCallback(wordArray)
                 }
-                wordArrayCallback.invoke(wordArray)
 
             }
         })
