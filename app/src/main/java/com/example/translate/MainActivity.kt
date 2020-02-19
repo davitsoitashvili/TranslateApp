@@ -1,9 +1,11 @@
 package com.example.translate
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,9 +27,9 @@ class MainActivity : AppCompatActivity(), ViewInterface {
 
         initPresenter()
         translateBtnClicked()
+        clearInputText()
 
     }
-
 
     private fun translateBtnClicked() {
         mainActivityTranslateBtn.setOnClickListener() {
@@ -35,6 +37,8 @@ class MainActivity : AppCompatActivity(), ViewInterface {
                 mainActivityInputWord.setError("Type word!...")
             } else {
                 presenter.getWordFromView(mainActivityInputWord.text.toString())
+                val imm : InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(this.currentFocus!!.windowToken, 0)
             }
         }
     }
@@ -44,6 +48,12 @@ class MainActivity : AppCompatActivity(), ViewInterface {
         presenter.onAttach(this)
     }
 
+    private fun clearInputText() {
+        mainActivityImageBtn.setOnClickListener() {
+            mainActivityInputWord.text.clear()
+        }
+    }
+
 
     override fun drawResult(result: ArrayList<String>) {
         val transaction = supportFragmentManager.beginTransaction()
@@ -51,12 +61,15 @@ class MainActivity : AppCompatActivity(), ViewInterface {
         transaction.addToBackStack("Previous page")
         transaction.commit()
         mainActivityTranslateBtn.visibility = View.INVISIBLE
+        mainActivityImageBtn.visibility = View.INVISIBLE
+
 
     }
 
     override fun onBackPressed() {
         mainActivityInputWord.text.clear()
         mainActivityTranslateBtn.visibility = View.VISIBLE
+        mainActivityImageBtn.visibility = View.VISIBLE
         super.onBackPressed()
     }
 
