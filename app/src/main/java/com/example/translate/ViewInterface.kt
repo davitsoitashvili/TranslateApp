@@ -1,5 +1,5 @@
 package com.example.translate
 
 interface ViewInterface {
-    fun drawResult(result : MutableList<String>)
+    fun drawResult(result : ArrayList<String>)
 }

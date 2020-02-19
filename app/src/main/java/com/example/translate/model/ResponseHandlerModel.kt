@@ -5,11 +5,12 @@ import com.example.translate.MainActivity
 import retrofit2.Call
 import retrofit2.Response
 
+@Suppress("NAME_SHADOWING")
 class ResponseHandlerModel {
 
-    fun getWordFromPresenter(word : String, wordArrayCallback : (MutableList<String>) -> Unit) {
-        val wordArray = mutableListOf<String>()
-        val call = apiHolder.getTranslatedWord("car")
+    fun getWordFromPresenter(word : String, wordArrayCallback : (ArrayList<String>) -> Unit) {
+        val wordArray = ArrayList<String>()
+        val call = apiHolder.getTranslatedWord(word)
         call.enqueue(object : retrofit2.Callback<Row> {
             override fun onFailure(call: Call<Row>, t: Throwable) {
                 t.printStackTrace()
