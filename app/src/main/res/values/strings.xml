@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">translate</string>
+    <string name="write_word">Write word</string>
+    <string name="translate">translate</string>
+</resources>
