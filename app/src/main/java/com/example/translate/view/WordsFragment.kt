@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_words.*
 
 class WordsFragment : Fragment() {
 
-    lateinit var wordsArray : ArrayList<String>
+    lateinit var wordsArray: ArrayList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,9 +27,9 @@ class WordsFragment : Fragment() {
     }
 
     companion object {
-        fun fragmentInstance(words : ArrayList<String>) : WordsFragment {
+        fun fragmentInstance(words: ArrayList<String>): WordsFragment {
             val bundle = Bundle()
-            bundle.putStringArrayList("words",words)
+            bundle.putStringArrayList("words", words)
             val fragment = WordsFragment()
             fragment.arguments = bundle
             return fragment
@@ -39,8 +39,9 @@ class WordsFragment : Fragment() {
     private fun initRecyclerView() {
         val recyclerAdapter = RecyclerAdapter(wordsArray)
         recyclerView.adapter = recyclerAdapter
-        recyclerView.layoutManager = GridLayoutManager(view!!.context,1)
+        recyclerView.layoutManager = GridLayoutManager(view!!.context, 1)
         recyclerAdapter.notifyDataSetChanged()
+
     }
 
 }

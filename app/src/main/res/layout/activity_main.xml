@@ -7,9 +7,9 @@
     tools:context=".MainActivity">
 
     <Button
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginBottom="@dimen/marginBottom50"
+        android:layout_marginStart="@dimen/marginLeft50"
+        android:layout_marginEnd="@dimen/marginRight50"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/mainActivityInputWord"
         android:id="@+id/mainActivityImageBtn"
@@ -18,8 +18,8 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginStart="@dimen/marginLeft40"
+        android:layout_marginEnd="@dimen/marginRight40"
         android:textSize="30sp"
         android:id="@+id/mainActivityInputWord"
         android:textAlignment="center"
@@ -31,12 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
     <Button
         android:textStyle="bold"
-        android:textColor="#FAF7F7"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
+        android:textColor="@color/white"
+        app:layout_goneMarginTop="@dimen/marginTop40"
+        android:layout_marginStart="@dimen/marginLeft70"
+        android:layout_marginEnd="@dimen/marginRight70"
         android:id="@+id/mainActivityTranslateBtn"
         android:text="@string/translate"
         android:layout_marginTop="40dp"
@@ -48,13 +48,19 @@
         android:background="@drawable/btn_style" />
 
     <ScrollView
-        android:background="#0C0A0A"
+        android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/WordsFragmentContainer"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.Group
+        app:constraint_referenced_ids="mainActivityImageBtn,mainActivityInputWord,mainActivityTranslateBtn"
+        android:id="@+id/mainActivityGroup"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

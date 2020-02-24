@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.word_model.view.*
 class RecyclerAdapter(val wordsArray: ArrayList<String>) :
     RecyclerView.Adapter<RecyclerAdapter.WordsHolder>() {
 
-
     @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsHolder {
         return WordsHolder(

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginBottom50">50dp</dimen>
+    <dimen name="marginLeft50">50dp</dimen>
+    <dimen name="marginRight50">50dp</dimen>
+    <dimen name="marginLeft40">40dp</dimen>
+    <dimen name="marginRight40">40dp</dimen>
+    <dimen name="marginTop40">40dp</dimen>
+    <dimen name="marginLeft70">70dp</dimen>
+    <dimen name="marginRight70">70dp</dimen>
+</resources>

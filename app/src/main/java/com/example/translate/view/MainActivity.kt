@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity(), ViewInterface {
         translateBtnClicked()
         clearInputText()
 
-
     }
 
     private fun translateBtnClicked() {
@@ -56,7 +55,6 @@ class MainActivity : AppCompatActivity(), ViewInterface {
         }
     }
 
-
     override fun drawResult(result: ArrayList<String>) {
         if (result.size == 0) {
             Toast.makeText(this, "The word ''${mainActivityInputWord.text}'' was not Found!", Toast.LENGTH_LONG).show()
@@ -66,16 +64,14 @@ class MainActivity : AppCompatActivity(), ViewInterface {
             transaction.replace(R.id.WordsFragmentContainer, WordsFragment.fragmentInstance(result))
             transaction.addToBackStack("Previous page")
             transaction.commit()
-            mainActivityTranslateBtn.visibility = View.INVISIBLE
-            mainActivityImageBtn.visibility = View.INVISIBLE
+            mainActivityGroup.visibility = View.GONE
 
         }
     }
 
     override fun onBackPressed() {
         mainActivityInputWord.text.clear()
-        mainActivityTranslateBtn.visibility = View.VISIBLE
-        mainActivityImageBtn.visibility = View.VISIBLE
+        mainActivityGroup.visibility = View.VISIBLE
         super.onBackPressed()
     }
 
